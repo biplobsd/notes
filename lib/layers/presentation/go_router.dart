@@ -1,6 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:notes/layers/presentation/pages/home_page.dart';
 import 'package:notes/layers/presentation/pages/login_page.dart';
+import 'package:notes/layers/presentation/pages/registration_page.dart';
 import 'package:notes/layers/presentation/pages/splash_page.dart';
 
 final gorouter = GoRouter(
@@ -15,6 +16,11 @@ final gorouter = GoRouter(
       name: '/login',
       path: '/login',
       builder: (context, state) => const LoginPage(),
+    ),
+    GoRoute(
+      name: '/register',
+      path: '/register',
+      builder: (context, state) => const RegistrationPage(),
     ),
     GoRoute(
       name: '/home',
