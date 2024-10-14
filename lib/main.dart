@@ -1,6 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:notes/layers/presentation/pages/login_page.dart';
+import 'package:notes/layers/presentation/go_router.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -13,6 +13,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(title: 'Notes', home: const LoginPage());
+    return MaterialApp.router(
+      title: 'Notes',
+      routerConfig: gorouter,
+    );
   }
 }
