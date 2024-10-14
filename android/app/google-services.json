@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "462188047681",
+    "project_id": "notes-dd80c",
+    "storage_bucket": "notes-dd80c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:462188047681:android:7f4731acc69fe64a3cc5c0",
+        "android_client_info": {
+          "package_name": "me.biplob.notes"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCXGeLX6oUAjBYpVmSHnLDXg5jK7DIzmgE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:462188047681:android:da9ffa08e3344a843cc5c0",
+        "android_client_info": {
+          "package_name": "me.biplobsd.notes"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCXGeLX6oUAjBYpVmSHnLDXg5jK7DIzmgE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
