@@ -64,29 +64,56 @@ class HomePage extends ConsumerWidget {
                 );
               }
 
+              // Display no notes
+              if (notesState.notes.isEmpty) {
+                return const Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(Icons.note, size: 64.0), // Displaying a note icon
+                      SizedBox(height: 10),
+                      Text(
+                        'No Notes Yet!',
+                        style: TextStyle(fontSize: 20),
+                      )
+                    ],
+                  ),
+                );
+              }
+
               // Display the list of notes
               return ListView.builder(
                 itemCount: notesState.notes.length,
                 itemBuilder: (context, index) {
                   final note = notesState.notes[index];
-                  return ListTile(
-                    title: Text(note['title'] ?? 'No Title'),
-                    subtitle: Text(note['description'] ?? 'No Description'),
-                    trailing: IconButton(
-                      icon: const Icon(Icons.delete),
-                      onPressed: () {
-                        ref
-                            .read(notesProvider.notifier)
-                            .deleteNote(userId, note['noteId']);
-                      },
-                    ),
-                    onTap: () {
+                  void editPressFun() =>
                       context.pushNamed('/note', queryParameters: {
                         'noteId': note['noteId'],
                         'title': note['title'],
                         'description': note['description'],
                       });
-                    },
+                  return ListTile(
+                    title: Text(note['title'] ?? 'No Title'),
+                    subtitle: Text(note['description'] ?? 'No Description'),
+                    trailing: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        IconButton(
+                          icon: const Icon(Icons.edit), // Edit button
+                          onPressed: editPressFun,
+                        ),
+                        IconButton(
+                          icon: const Icon(Icons.delete), // Delete button
+                          onPressed: () {
+                            // Call the delete note method
+                            ref
+                                .read(notesProvider.notifier)
+                                .deleteNote(userId, note['noteId']);
+                          },
+                        ),
+                      ],
+                    ),
+                    onTap: editPressFun,
                   );
                 },
               );
@@ -97,7 +124,6 @@ class HomePage extends ConsumerWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // GoRouter.of(context).go('/add-note');
           context.pushNamed('/note');
         },
         child: const Icon(Icons.add),
