@@ -1,4 +1,5 @@
 import 'package:go_router/go_router.dart';
+import 'package:notes/layers/presentation/pages/add_note_page.dart';
 import 'package:notes/layers/presentation/pages/home_page.dart';
 import 'package:notes/layers/presentation/pages/login_page.dart';
 import 'package:notes/layers/presentation/pages/registration_page.dart';
@@ -26,6 +27,11 @@ final gorouter = GoRouter(
       name: '/home',
       path: '/home',
       builder: (context, state) => const HomePage(),
+    ),
+    GoRoute(
+      name: '/add-note',
+      path: '/add-note',
+      builder: (context, state) => const AddNotePage(),
     )
   ],
 );

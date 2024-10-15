@@ -14,7 +14,8 @@ class AuthRepositoryImpl implements AuthRepository {
     try {
       final user = await dataSource.signIn(email, password);
       if (user != null) {
-        return Right(User(uid: user.uid, email: email));
+        return Right(
+            User(uid: user.uid, email: email, name: user.displayName ?? ''));
       } else {
         return Left(AuthFailure("User not found"));
       }
@@ -29,7 +30,7 @@ class AuthRepositoryImpl implements AuthRepository {
     try {
       final user = await dataSource.register(email, password, name);
       if (user != null) {
-        return Right(User(uid: user.uid, email: user.email ?? ''));
+        return Right(User(uid: user.uid, email: user.email ?? '', name: name));
       } else {
         return Left(AuthFailure("Registration failed"));
       }

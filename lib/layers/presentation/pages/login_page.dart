@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:notes/layers/presentation/providers/auth_provider.dart';
 import 'package:notes/layers/presentation/widgets/login_form.dart';
 
@@ -15,7 +16,12 @@ class LoginPage extends ConsumerWidget {
       body: authState.when(
         initial: () => LoginForm(),
         loading: () => const Center(child: CircularProgressIndicator()),
-        authenticated: (user) => Center(child: Text('Welcome, ${user.email}!')),
+        authenticated: (user) {
+          Future.microtask(() {
+            context.go('/home');
+          });
+          return Center(child: Text('Welcome, ${user.email}!'));
+        },
         error: (message) => Center(child: Text(message)),
       ),
     );
