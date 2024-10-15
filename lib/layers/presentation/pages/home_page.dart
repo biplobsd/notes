@@ -31,7 +31,9 @@ class HomePage extends ConsumerWidget {
           final userId = user.uid; // Retrieve user ID
 
           // Fetch notes using the userId
-          ref.read(notesProvider.notifier).fetchNotes(userId);
+          Future.microtask(() {
+            ref.read(notesProvider.notifier).fetchNotes(userId);
+          });
 
           return Consumer(
             builder: (context, ref, _) {
