@@ -12,6 +12,12 @@ class NotesRepositoryImpl implements NotesRepository {
   }
 
   @override
+  Future<void> updateNote(
+      String userId, String noteId, String title, String description) {
+    return dataSource.updateNote(userId, noteId, title, description);
+  }
+
+  @override
   Future<void> deleteNote(String userId, String noteId) async {
     await dataSource.deleteNote(userId, noteId);
   }

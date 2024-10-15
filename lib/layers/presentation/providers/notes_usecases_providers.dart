@@ -5,6 +5,7 @@ import 'package:notes/layers/data/repositories_impl/notes_repository_impl.dart';
 import 'package:notes/layers/domain/use_cases/add_note_usecase.dart';
 import 'package:notes/layers/domain/use_cases/delete_note_usecase.dart';
 import 'package:notes/layers/domain/use_cases/get_notes_usecase.dart';
+import 'package:notes/layers/domain/use_cases/update_note_usecase.dart';
 
 final firestoreProvider = Provider((ref) => FirebaseFirestore.instance);
 
@@ -18,6 +19,10 @@ final notesRepositoryProvider = Provider((ref) {
 
 final addNoteUseCaseProvider = Provider((ref) {
   return AddNoteUseCase(ref.read(notesRepositoryProvider));
+});
+
+final updateNoteUseCaseProvider = Provider((ref) {
+  return UpdateNoteUseCase(ref.read(notesRepositoryProvider));
 });
 
 final deleteNoteUseCaseProvider = Provider((ref) {

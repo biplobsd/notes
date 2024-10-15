@@ -22,6 +22,24 @@ class FirestoreNotesDataSource {
     }
   }
 
+  Future<void> updateNote(
+      String userId, String noteId, String title, String description) async {
+    try {
+      await firestore
+          .collection('users')
+          .doc(userId)
+          .collection('notes')
+          .doc(noteId)
+          .update({
+        'title': title,
+        'description': description,
+        'updatedAt': FieldValue.serverTimestamp(),
+      });
+    } catch (e) {
+      throw Exception('Failed to update note: $e');
+    }
+  }
+
   Future<void> deleteNote(String userId, String noteId) async {
     try {
       await firestore

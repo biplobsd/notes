@@ -76,7 +76,11 @@ class HomePage extends ConsumerWidget {
                       },
                     ),
                     onTap: () {
-                      // Optionally, navigate to a detailed view of the note
+                      context.pushNamed('/note', queryParameters: {
+                        'noteId': note['noteId'],
+                        'title': note['title'],
+                        'description': note['description'],
+                      });
                     },
                   );
                 },
@@ -88,7 +92,8 @@ class HomePage extends ConsumerWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          GoRouter.of(context).go('/add-note');
+          // GoRouter.of(context).go('/add-note');
+          context.pushNamed('/note');
         },
         child: const Icon(Icons.add),
       ),

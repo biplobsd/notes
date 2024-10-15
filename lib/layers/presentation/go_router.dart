@@ -2,6 +2,7 @@ import 'package:go_router/go_router.dart';
 import 'package:notes/layers/presentation/pages/add_note_page.dart';
 import 'package:notes/layers/presentation/pages/home_page.dart';
 import 'package:notes/layers/presentation/pages/login_page.dart';
+import 'package:notes/layers/presentation/pages/note_form_page.dart';
 import 'package:notes/layers/presentation/pages/registration_page.dart';
 import 'package:notes/layers/presentation/pages/splash_page.dart';
 
@@ -32,6 +33,21 @@ final gorouter = GoRouter(
       name: '/add-note',
       path: '/add-note',
       builder: (context, state) => const AddNotePage(),
+    ),
+    GoRoute(
+      path: '/note',
+      name: '/note',
+      builder: (context, state) {
+        final noteId = state.uri.queryParameters['noteId'];
+        final title = state.uri.queryParameters['title'];
+        final description = state.uri.queryParameters['description'];
+
+        return NoteFormPage(
+          noteId: noteId,
+          initialTitle: title,
+          initialDescription: description,
+        );
+      },
     )
   ],
 );
