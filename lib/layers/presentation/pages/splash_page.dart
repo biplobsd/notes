@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:notes/layers/presentation/widgets/logo.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -19,24 +20,9 @@ class _SplashPageState extends State<SplashPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Icon(
-              Icons.notes,
-              size: 100,
-            ),
-            const SizedBox(
-              height: 24,
-            ),
-            Text(
-              'Notes',
-              style: Theme.of(context).textTheme.headlineLarge,
-            )
-          ],
-        ),
+        child: Logo(),
       ),
     );
   }

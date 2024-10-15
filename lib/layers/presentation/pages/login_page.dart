@@ -12,7 +12,7 @@ class LoginPage extends ConsumerWidget {
     final authState = ref.watch(authProvider);
 
     return Scaffold(
-      appBar: AppBar(title: const Text("Login")),
+      appBar: AppBar(title: const Text("Notes - login page")),
       body: authState.when(
         initial: () => LoginForm(),
         loading: () => const Center(child: CircularProgressIndicator()),

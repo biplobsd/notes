@@ -17,6 +17,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp.router(
       title: 'Notes',
       routerConfig: gorouter,
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.blue,
+          primary: Colors.blue,
+          secondary: Colors.green,
+        ),
+        useMaterial3: true,
+      ),
     );
   }
 }

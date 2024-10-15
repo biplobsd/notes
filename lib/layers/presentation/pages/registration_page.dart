@@ -12,13 +12,13 @@ class RegistrationPage extends ConsumerWidget {
     final authState = ref.watch(authProvider);
 
     return Scaffold(
-      appBar: AppBar(title: const Text("Register")),
+      appBar: AppBar(title: const Text("Notes - Register")),
       body: authState.when(
         initial: () => RegisterForm(),
         loading: () => const Center(child: CircularProgressIndicator()),
         authenticated: (user) {
           Future.microtask(() {
-            context.go('/home');
+            context.go('/');
           });
           return Center(child: Text('Welcome, ${user.email}!'));
         },

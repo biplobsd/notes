@@ -11,31 +11,37 @@ class LoginForm extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Form(
-      child: Column(
-        children: [
-          TextFormField(
-            controller: _emailController,
-            decoration: const InputDecoration(labelText: 'Email'),
-          ),
-          TextFormField(
-            controller: _passwordController,
-            decoration: const InputDecoration(labelText: 'Password'),
-            obscureText: true,
-          ),
-          ElevatedButton(
-            onPressed: () {
-              final email = _emailController.text;
-              final password = _passwordController.text;
-              ref.read(authProvider.notifier).signIn(email, password);
-            },
-            child: const Text('Login'),
-          ),
-          TextButton(
-            onPressed: () => context.go('/register'),
-            child: const Text('Don\'t have an account? Register'),
-          ),
-        ],
+    return Padding(
+      padding: const EdgeInsets.all(12.0),
+      child: Form(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            TextFormField(
+              controller: _emailController,
+              decoration: const InputDecoration(labelText: 'Email'),
+            ),
+            const SizedBox(height: 20),
+            TextFormField(
+              controller: _passwordController,
+              decoration: const InputDecoration(labelText: 'Password'),
+              obscureText: true,
+            ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                final email = _emailController.text;
+                final password = _passwordController.text;
+                ref.read(authProvider.notifier).signIn(email, password);
+              },
+              child: const Text('Login'),
+            ),
+            TextButton(
+              onPressed: () => context.go('/register'),
+              child: const Text('Don\'t have an account? Register'),
+            ),
+          ],
+        ),
       ),
     );
   }
