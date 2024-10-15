@@ -5,6 +5,7 @@ import 'package:notes/layers/data/repositories_impl/auth_repository_impl.dart';
 import 'package:notes/layers/domain/repositories/auth_repository.dart';
 import 'package:notes/layers/domain/use_cases/register_usecase.dart';
 import 'package:notes/layers/domain/use_cases/sign_in_usecase.dart';
+import 'package:notes/layers/domain/use_cases/sign_out_usecase.dart';
 
 final firebaseAuthProvider =
     Provider<FirebaseAuth>((ref) => FirebaseAuth.instance);
@@ -22,6 +23,11 @@ final authRepositoryProvider = Provider<AuthRepository>((ref) {
 final signInUseCaseProvider = Provider<SignInUseCase>((ref) {
   final repository = ref.read(authRepositoryProvider);
   return SignInUseCase(repository);
+});
+
+final signOutUseCaseProvider = Provider<SignOutUsecase>((ref) {
+  final repository = ref.read(authRepositoryProvider);
+  return SignOutUsecase(repository);
 });
 
 final registerUseCaseProvider = Provider<RegisterUseCase>((ref) {

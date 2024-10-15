@@ -30,4 +30,12 @@ class FirebaseAuthDataSource {
       throw AuthException(message: e.toString());
     }
   }
+
+  Future<void> signOut() async {
+    try {
+      await firebaseAuth.signOut();
+    } catch (e) {
+      throw AuthException(message: e.toString());
+    }
+  }
 }

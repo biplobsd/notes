@@ -18,13 +18,18 @@ class HomePage extends ConsumerWidget {
           IconButton(
             icon: const Icon(Icons.logout),
             onPressed: () {
-              // Call logout method
+              ref.read(authProvider.notifier).signOut();
             },
           ),
         ],
       ),
       body: authState.when(
-        initial: () => const Center(child: Text('Please log in.')),
+        initial: () {
+          Future.microtask(() {
+            context.go('/login');
+          });
+          const Center(child: Text('Please log in.'));
+        },
         loading: () => const Center(child: CircularProgressIndicator()),
         authenticated: (user) {
           // Here you have access to the user object
