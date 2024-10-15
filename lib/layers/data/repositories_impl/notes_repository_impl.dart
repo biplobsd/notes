@@ -12,6 +12,11 @@ class NotesRepositoryImpl implements NotesRepository {
   }
 
   @override
+  Future<void> deleteNote(String userId, String noteId) async {
+    await dataSource.deleteNote(userId, noteId);
+  }
+
+  @override
   Stream<List<Map<String, dynamic>>> getNotes(String userId) {
     return dataSource.getNotes(userId);
   }

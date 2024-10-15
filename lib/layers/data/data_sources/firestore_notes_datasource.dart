@@ -6,11 +6,33 @@ class FirestoreNotesDataSource {
   FirestoreNotesDataSource(this.firestore);
 
   Future<void> addNote(String userId, String title, String description) async {
-    await firestore.collection('users').doc(userId).collection('notes').add({
-      'title': title,
-      'description': description,
-      'createdAt': FieldValue.serverTimestamp(),
-    });
+    try {
+      // Generate a new document reference with an ID
+      final noteRef =
+          firestore.collection('users').doc(userId).collection('notes').doc();
+
+      await noteRef.set({
+        'noteId': noteRef.id,
+        'title': title,
+        'description': description,
+        'createdAt': FieldValue.serverTimestamp(),
+      });
+    } catch (e) {
+      throw Exception('Failed to add note: $e');
+    }
+  }
+
+  Future<void> deleteNote(String userId, String noteId) async {
+    try {
+      await firestore
+          .collection('users')
+          .doc(userId)
+          .collection('notes')
+          .doc(noteId)
+          .delete();
+    } catch (e) {
+      throw Exception('Failed to delete note: $e');
+    }
   }
 
   Stream<List<Map<String, dynamic>>> getNotes(String userId) {

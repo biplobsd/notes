@@ -67,6 +67,14 @@ class HomePage extends ConsumerWidget {
                   return ListTile(
                     title: Text(note['title'] ?? 'No Title'),
                     subtitle: Text(note['description'] ?? 'No Description'),
+                    trailing: IconButton(
+                      icon: const Icon(Icons.delete),
+                      onPressed: () {
+                        ref
+                            .read(notesProvider.notifier)
+                            .deleteNote(userId, note['noteId']);
+                      },
+                    ),
                     onTap: () {
                       // Optionally, navigate to a detailed view of the note
                     },
