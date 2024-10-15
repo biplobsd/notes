@@ -24,8 +24,8 @@ final gorouter = GoRouter(
       builder: (context, state) => const RegistrationPage(),
     ),
     GoRoute(
-      name: '/home',
-      path: '/home',
+      name: '/',
+      path: '/',
       builder: (context, state) => const HomePage(),
     ),
     GoRoute(

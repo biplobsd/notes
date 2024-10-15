@@ -18,7 +18,7 @@ class LoginPage extends ConsumerWidget {
         loading: () => const Center(child: CircularProgressIndicator()),
         authenticated: (user) {
           Future.microtask(() {
-            context.go('/home');
+            context.go('/');
           });
           return Center(child: Text('Welcome, ${user.email}!'));
         },
