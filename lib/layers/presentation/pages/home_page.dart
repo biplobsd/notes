@@ -13,7 +13,12 @@ class HomePage extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Notes'),
+        title: authState.when(
+          authenticated: (user) => Text('Notes - ${user.name}'),
+          error: (message) => Text('Notes - $message'),
+          initial: () => const Text('Notes - ...'),
+          loading: () => const Text('Note - loading...'),
+        ),
         actions: [
           IconButton(
             icon: const Icon(Icons.logout),
